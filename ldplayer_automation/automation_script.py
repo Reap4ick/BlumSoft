@@ -1,15 +1,11 @@
-import datetime
 import cv2
 import numpy as np
 import subprocess
 import time
-import threading
-import os
-from concurrent.futures import ThreadPoolExecutor
 import uiautomator2 as u2
 
 
-emulator_address = "emulator-5554"#Напишіть назву свого емуляagaagтора(Див. Інструкцію)
+emulator_address = "emulator-5554"#Напишіть назву свого емуляagaagтора
 d = u2.connect(emulator_address)
 
 adb_shell = subprocess.Popen(
@@ -41,51 +37,64 @@ def screenshot():
         stdout=subprocess.DEVNULL,
         stderr=subprocess.DEVNULL
     )
-    print("зробили скрін", f"{time.strftime('%H:%M:%S.', time.localtime())}{int(time.time() * 10) % 10}")
 
-def click(main_image_path, template_image_path, threshold=0.8, scale_factor=0.5):
-    try:
-        screenshot()
-        
-        img = cv2.imread(main_image_path)
-        template = cv2.imread(template_image_path)
+def click(main_image_path, template_image_path, threshold=0.8, max_attempts=5):
+    for attempt in range(max_attempts):
+        try:
+            screenshot()
 
-        img = cv2.resize(img, None, fx=scale_factor, fy=scale_factor)
-        template = cv2.resize(template, None, fx=scale_factor, fy=scale_factor)
+            img = cv2.imread(main_image_path)
+            template = cv2.imread(template_image_path)
 
-        w, h = template.shape[1], template.shape[0]
+            w, h = template.shape[1], template.shape[0]
 
-        result = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
-        locations = np.where(result >= threshold)
+            result = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
+            locations = np.where(result >= threshold)
 
-        x, y = int((locations[1][0] + w // 2) / scale_factor), int((locations[0][0] + h // 2) / scale_factor)
-        subprocess.run(["adb", "shell", "input", "tap", str(x), str(y)])
-        print("Є)))", f"{time.strftime('%H:%M:%S.', time.localtime())}{int(time.time() * 10) % 10}")
-    except:
-        print("Error(((( Не знайшли фото(")
+            x, y = int(locations[1][0] + w // 2), int(locations[0][0] + h // 2)
+            subprocess.run(["adb", "shell", "input", "tap", str(x), str(y)])
+            
+            print("Click successful:", f"{time.strftime('%H:%M:%S.', time.localtime())}{int(time.time() * 10) % 10}")
+            return True
+            
+        except:
+            if attempt==max_attempts-1:
+                print(f"Остання спроба невдала({attempt + 1}/{max_attempts})", f"{time.strftime('%H:%M:%S.', time.localtime())}{int(time.time() * 10) % 10}")
+                time.sleep(3)
+            else:
+                print(f"Спроба {attempt + 1}/{max_attempts} невдала. Пробуємо знову...", f"{time.strftime('%H:%M:%S.', time.localtime())}{int(time.time() * 10) % 10}")
+                time.sleep(3)
+
+    print("Error: Не можемо знайти фото. Завершуємо роботу коду.", f"{time.strftime('%H:%M:%S.', time.localtime())}{int(time.time() * 10) % 10}")
+    exit()
+    return False
 
 
+def clickError(main_image_path, template_image_path, threshold=0.8, max_attempts=5):
+    for attempt in range(max_attempts):
+        try:
+            screenshot()
 
-def clickError(main_image_path, template_image_path, threshold=0.8, scale_factor=0.5):
-    screenshot()
-        
-    img = cv2.imread(main_image_path)
-    template = cv2.imread(template_image_path)
+            img = cv2.imread(main_image_path)
+            template = cv2.imread(template_image_path)
 
-    img = cv2.resize(img, None, fx=scale_factor, fy=scale_factor)
-    template = cv2.resize(template, None, fx=scale_factor, fy=scale_factor)
+            w, h = template.shape[1], template.shape[0]
 
-    w, h = template.shape[1], template.shape[0]
+            result = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
+            locations = np.where(result >= threshold)
 
-    result = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
-    locations = np.where(result >= threshold)
-
-    x, y = int((locations[1][0] + w // 2) / scale_factor), int((locations[0][0] + h // 2) / scale_factor)
+            x, y = int(locations[1][0] + w // 2), int(locations[0][0] + h // 2)
+            subprocess.run(["adb", "shell", "input", "tap", str(x), str(y)])
+            # print("Є)))", f"{time.strftime('%H:%M:%S.', time.localtime())}{int(time.time() * 10) % 10}")
+        except:
+            if attempt==max_attempts-1:
+                print(f"Остання спроба невдала({attempt + 1}/{max_attempts})", f"{time.strftime('%H:%M:%S.', time.localtime())}{int(time.time() * 10) % 10}")
+                time.sleep(3)
+            else:
+                print(f"Спроба {attempt + 1}/{max_attempts} невдала. Пробуємо знову...", f"{time.strftime('%H:%M:%S.', time.localtime())}{int(time.time() * 10) % 10}")
+                time.sleep(3)
+    print("Не знайшли(, продовжуємо...", f"{time.strftime('%H:%M:%S.', time.localtime())}{int(time.time() * 10) % 10}")
     subprocess.run(["adb", "shell", "input", "tap", str(x), str(y)])
-    print("Є)))", f"{time.strftime('%H:%M:%S.', time.localtime())}{int(time.time() * 10) % 10}")
-
-
-
 
 
 
@@ -94,7 +103,6 @@ def click_coin(threshold=0.7, offset_y=400):
     loc = np.where(cv2.matchTemplate(cv2.resize((cv2.cvtColor((np.array(d.screenshot(format="opencv"))), cv2.COLOR_BGR2GRAY))[offset_y:], (0, 0), fx=0.35, fy=0.35), templateCoin, cv2.TM_CCOEFF_NORMED) >= threshold)
     if loc[0].size:
         d.click((int((loc[1][0] + templateCoin.shape[1] // 2) / 0.35)), (int((loc[0][0] + templateCoin.shape[0] // 2) / 0.35) + offset_y) + 100)
-        print("+")
         return True
     return False
 
@@ -108,18 +116,20 @@ while True:
     time.sleep(5)
     click('screenshot.png', 'pathimg\launch.png', threshold=0.8)
     time.sleep(5)
-    click('screenshot.png', 'pathimg\start.png', threshold=0.8)
-
+    try:
+        clickError('screenshot.png', 'pathimg\start.png', threshold=0.8)
+    except:
+        ...
     time.sleep(15)
     try:
-        click('screenshot.png', 'pathimg\Continue.png', threshold=0.8)
+        clickError('screenshot.png', 'pathimg\Continue.png', threshold=0.8)
     except:
         ...
     time.sleep(5)
     try:
-        click('screenshot.png', 'pathimg\Claim.png', threshold=0.8)
+        clickError('screenshot.png', 'pathimg\Claim.png', threshold=0.8)
         time.sleep(3)
-        click('screenshot.png', 'pathimg\Farm.png', threshold=0.8)
+        clickError('screenshot.png', 'pathimg\Farm.png', threshold=0.8)
     except:
         ...
     time.sleep(5)
@@ -151,5 +161,5 @@ while True:
 
 
     close_telegram()
-    print("Очікування 8 годин перед повторним запуском...")
+    print("Очікування 8 годин перед повторним запуском...", f"{time.strftime('%H:%M:%S.', time.localtime())}{int(time.time() * 10) % 10}")
     time.sleep(8 * 60 * 60)
