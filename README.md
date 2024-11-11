@@ -14,8 +14,8 @@
 
 3. Після цього відкриваємо розархівований файл і повторюємо дії на фото:
 <div align="center">
-  <img src="Guide/4.jpg" alt="Четверте фото" height="300" style="margin: 10px;">
-  <img src="Guide/5.jpg" alt="П'яте фото" height="300" style="margin: 10px;">
+  <img src="Guide/4.jpg" alt="Четверте фото" height="200" style="margin: 10px;">
+  <img src="Guide/5.jpg" alt="П'яте фото" height="200" style="margin: 10px;">
 </div>
 
 Повинно було відкритися командне вікно:
@@ -30,6 +30,7 @@
   adb devices
 ```
 </div> 
+І знаходимо імя нашого емулятора після чого копіюєм його
 
 <div align="center">
   <img src="Guide/7.jpg" alt="Шосте фото" height="300" style="margin: 10px;">
