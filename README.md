@@ -14,5 +14,5 @@
 3. Після чого йдемо і відкриваємо наш розархівований архів, після чого повторюємо дії на фото:
 <div align="center">
   <img src="Guide/4.jpg" alt="Перше фото" height="300" style="margin: 10px;">
-  <img src="Guide/5.jpg" alt="Друге фото" width="300" style="margin: 10px;">
+  <img src="Guide/5.jpg" alt="Друге фото"height="300" style="margin: 10px;">
 </div>
