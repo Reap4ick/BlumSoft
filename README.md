@@ -46,3 +46,8 @@ BlumSoft-main\ldplayer_automation\automation_script.py
 У Telegram створюємо папку, куди додаємо Blum бота, і все готово! Залишається тільки запустити наш код і насолоджуватися результатом :)
 
 <div align="center"> <img src="https://github.com/user-attachments/assets/ae85626c-70d6-48a4-a677-582a6dfd85d1" alt="Фото Blum бота" style="margin: 10px;"> </div> 
+
+## Контакти
+Автор - [Reap4ick](https://github.com/Reap4ick)  
+Tg - @moneiyii
+
