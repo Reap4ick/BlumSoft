@@ -42,7 +42,7 @@
 ```
 у ньому знаходим отакий рядок і у ньому замінюємо на нашу назву:
 <div align="center">
-  ![image](https://github.com/user-attachments/assets/0d4b23ca-8475-486b-866d-4a604f2b2073)
+  <img src="https://github.com/user-attachments/assets/0d4b23ca-8475-486b-866d-4a604f2b2073" alt="фото" height="300" style="margin: 10px;">
 </div>
 
 
