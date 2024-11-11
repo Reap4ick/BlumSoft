@@ -5,7 +5,7 @@ import time
 import uiautomator2 as u2
 
 
-emulator_address = "emulator-5554"#Напишіть назву свого емуляagaagтора
+emulator_address = "emulator-5554"#Напишіть назву свого емулятора
 d = u2.connect(emulator_address)
 
 adb_shell = subprocess.Popen(
