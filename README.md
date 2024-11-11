@@ -8,8 +8,8 @@
 
 <div align="center">
   <img src="Guide/5303469086921057247.jpg" alt="Перше фото" height="300" style="margin: 10px;">
-  <img src="Guide/5303469086921057237.jpg" alt="Друге фото" height="300" style="margin: 10px;">
-  <img src="Guide/5303469086921057252.jpg" alt="Третє фото" height="300" style="margin: 10px;">
+  <img src="Guide/5303469086921057237.jpg" alt="Друге фото" width="300" style="margin: 10px;">
+  <img src="Guide/5303469086921057252.jpg" alt="Третє фото" width="300" style="margin: 10px;">
 </div>
 
 3. Після цього відкриваємо розархівований файл і повторюємо дії на фото:
