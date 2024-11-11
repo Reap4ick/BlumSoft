@@ -28,4 +28,12 @@
   
   ```bash
   adb devices
-</div> ```
+```
+</div> 
+
+<div align="center">
+  <img src="Guide/7.jpg" alt="Шосте фото" height="300" style="margin: 10px;">
+</div>
+
+
+
