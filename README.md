@@ -22,7 +22,8 @@
 </div>
 
 <div align="center">
-  Тепер вводимо команду \```bash 
+  Тепер вводимо команду 
+  \```bash 
   adb devices
   \```
 </div>
