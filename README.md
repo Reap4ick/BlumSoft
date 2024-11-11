@@ -49,5 +49,5 @@ BlumSoft-main\ldplayer_automation\automation_script.py
 
 ## Контакти
 Автор - [Reap4ick](https://github.com/Reap4ick)  
-Tg - @moneiyii
+Tg - [@moneiyii](https://t.me/moneiyii)
 
