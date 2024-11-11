@@ -16,3 +16,11 @@
   <img src="Guide/4.jpg" alt="Перше фото" height="300" style="margin: 10px;">
   <img src="Guide/5.jpg" alt="Друге фото"height="300" style="margin: 10px;">
 </div>
+Повинно було відкритись командний рядок:
+<div align="center">
+  <img src="Guide/6.jpg" alt="Перше фото" height="300" style="margin: 10px;">
+</div>
+
+<div align="center">
+  Тепер вводимо команду\```bash adb devices\```
+</div>
