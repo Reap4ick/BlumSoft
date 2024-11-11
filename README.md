@@ -1,4 +1,4 @@
-<div align="center">
+![image](https://github.com/user-attachments/assets/33ef9436-2d0b-4f5d-9abb-2fe889194065)<div align="center">
   <h1>Короткий гайд що робити, якщо виникають помилки при роботі коду</h1>
   <p>(та як взагалі його запустити)</p>
 </div>
@@ -36,5 +36,11 @@
   <img src="Guide/7.jpg" alt="Шосте фото" height="300" style="margin: 10px;">
 </div>
 
+Шукаємо файл за таким шляхом 
+  
+  ```bash
+  BlumSoft-main\ldplayer_automation\automation_script.py
+```
+![image](https://github.com/user-attachments/assets/0d4b23ca-8475-486b-866d-4a604f2b2073)
 
 
