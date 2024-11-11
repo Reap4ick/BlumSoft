@@ -7,7 +7,7 @@
 2. Запускаємо емулятор та виставляємо правильні налаштування емулятора.
 
 <div align="center">
-  <img src="Guide/5303469086921057247.jpg" alt="Перше фото" width="300" style="margin: 10px;">
+  <img src="Guide/5303469086921057247.jpg" alt="Перше фото" height="300" style="margin: 10px;">
   <img src="Guide/5303469086921057237.jpg" alt="Друге фото" width="300" style="margin: 10px;">
   <img src="Guide/5303469086921057252.jpg" alt="Третє фото" width="300" style="margin: 10px;">
 </div>
