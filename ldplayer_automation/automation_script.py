@@ -5,7 +5,7 @@ import time
 import uiautomator2 as u2
 
 
-emulator_address = "Entet emulator name"#Напишіть назву свого емулятора
+emulator_address = "Enter your emulator name"#Напишіть назву свого емуляagaagтора
 d = u2.connect(emulator_address)
 
 adb_shell = subprocess.Popen(
@@ -54,7 +54,7 @@ def click(main_image_path, template_image_path, threshold=0.8, max_attempts=5):
             x, y = int(locations[1][0] + w // 2), int(locations[0][0] + h // 2)
             subprocess.run(["adb", "shell", "input", "tap", str(x), str(y)])
             
-            print("Клік виконано:", f"{time.strftime('%H:%M:%S.', time.localtime())}{int(time.time() * 10) % 10}")
+            print("Click successful:", f"{time.strftime('%H:%M:%S.', time.localtime())}{int(time.time() * 10) % 10}")
             return True
             
         except:
