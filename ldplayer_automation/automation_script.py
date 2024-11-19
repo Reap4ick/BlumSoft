@@ -110,30 +110,30 @@ while True:
         
     launch_telegram()  
     time.sleep(5)
-    click('screenshot.png', 'pathimg\cryptotry.png', threshold=0.8)
+    click('screenshot.png', r'pathing\cryptotry.png', threshold=0.8)
     time.sleep(5)
-    click('screenshot.png', 'pathimg\Blum.png', threshold=0.8)
+    click('screenshot.png', r'pathimg\Blum.png', threshold=0.8)
     time.sleep(5)
-    click('screenshot.png', 'pathimg\launch.png', threshold=0.8)
+    click('screenshot.png', r'pathimg\launch.png', threshold=0.8)
     time.sleep(5)
     try:
-        clickError('screenshot.png', 'pathimg\start.png', threshold=0.8)
+        clickError('screenshot.png', r'pathimg\start.png', threshold=0.8)
     except:
         ...
     time.sleep(15)
     try:
-        clickError('screenshot.png', 'pathimg\Continue.png', threshold=0.8)
+        clickError('screenshot.png', r'pathimg\Continue.png', threshold=0.8)
     except:
         ...
     time.sleep(5)
     try:
-        clickError('screenshot.png', 'pathimg\Claim.png', threshold=0.8)
+        clickError('screenshot.png', r'pathimg\Claim.png', threshold=0.8)
         time.sleep(3)
-        clickError('screenshot.png', 'pathimg\Farm.png', threshold=0.8)
+        clickError('screenshot.png', r'pathimg\Farm.png', threshold=0.8)
     except:
         ...
     time.sleep(5)
-    click('screenshot.png', 'pathimg\Play.png', threshold=0.8)
+    click('screenshot.png', r'pathimg\Play.png', threshold=0.8)
 
 
 
