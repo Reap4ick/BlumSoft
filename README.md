@@ -61,8 +61,12 @@ BlumSoft-main\ldplayer_automation\automation_script.py
 !!! ВАЖЛИВО !!! потрібно щоб папку було видно зразу при вході в телеграм а Blum бота одразу після переходу у цю папку інакше виникнуть помилки !!!
 <div align="center"> <img src="https://github.com/user-attachments/assets/ae85626c-70d6-48a4-a677-582a6dfd85d1" alt="Фото Blum бота" style="margin: 10px;"> </div> 
 
+Use 
 
-
+```bash
+& C:/Users/User/AppData/Local/Programs/Python/Python311/python.exe c:/Users/User/Desktop/BlumTest/platform-tools/ldplayer_automation/automation_script.py
+```
+to start
 
 
 ## Контакти
