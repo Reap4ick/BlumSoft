@@ -5,7 +5,7 @@ import time
 import uiautomator2 as u2
 
 
-emulator_address = "Enter your emulator name"#Напишіть назву свого емуляagaagтора
+emulator_address = "emulator-5554"#Напишіть назву свого емулятора
 d = u2.connect(emulator_address)
 
 adb_shell = subprocess.Popen(
@@ -97,6 +97,21 @@ def clickError(main_image_path, template_image_path, threshold=0.8, max_attempts
     subprocess.run(["adb", "shell", "input", "tap", str(x), str(y)])
 
 
+def oneclickError(main_image_path, template_image_path, threshold=0.8):
+            screenshot()
+
+            img = cv2.imread(main_image_path)
+            template = cv2.imread(template_image_path)
+
+            w, h = template.shape[1], template.shape[0]
+
+            result = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)
+            locations = np.where(result >= threshold)
+
+            x, y = int(locations[1][0] + w // 2), int(locations[0][0] + h // 2)
+            subprocess.run(["adb", "shell", "input", "tap", str(x), str(y)])
+            # print("Є)))", f"{time.strftime('%H:%M:%S.', time.localtime())}{int(time.time() * 10) % 10}")
+
 
 templateCoin = cv2.resize(cv2.imread('pathimg/coin.png', cv2.IMREAD_GRAYSCALE), (0, 0), fx=0.35, fy=0.35)
 def click_coin(threshold=0.7, offset_y=400):
@@ -108,32 +123,33 @@ def click_coin(threshold=0.7, offset_y=400):
 
 while True:
         
-    launch_telegram()  
+    # launch_telegram()  
+    click('screenshot.png', r'pathimg\telegram.png', threshold=0.8)
     time.sleep(5)
-    click('screenshot.png', r'pathing\cryptotry.png', threshold=0.8)
+    click('screenshot.png', 'pathimg\cryptotry.png', threshold=0.8)
     time.sleep(5)
-    click('screenshot.png', r'pathimg\Blum.png', threshold=0.8)
+    click('screenshot.png', 'pathimg\Blum.png', threshold=0.8)
     time.sleep(5)
-    click('screenshot.png', r'pathimg\launch.png', threshold=0.8)
+    click('screenshot.png', 'pathimg\launch.png', threshold=0.8)
     time.sleep(5)
     try:
-        clickError('screenshot.png', r'pathimg\start.png', threshold=0.8)
+        clickError('screenshot.png', 'pathimg\start.png', threshold=0.8)
     except:
         ...
     time.sleep(15)
     try:
-        clickError('screenshot.png', r'pathimg\Continue.png', threshold=0.8)
+        clickError('screenshot.png', 'pathimg\Continue.png', threshold=0.8)
     except:
         ...
     time.sleep(5)
     try:
-        clickError('screenshot.png', r'pathimg\Claim.png', threshold=0.8)
+        clickError('screenshot.png', 'pathimg\Claim.png', threshold=0.8)
         time.sleep(3)
-        clickError('screenshot.png', r'pathimg\Farm.png', threshold=0.8)
+        clickError('screenshot.png', 'pathimg\Farm.png', threshold=0.8)
     except:
         ...
     time.sleep(5)
-    click('screenshot.png', r'pathimg\Play.png', threshold=0.8)
+    click('screenshot.png', 'pathimg\Play.png', threshold=0.8)
 
 
 
@@ -150,7 +166,7 @@ while True:
             
             if time.time() - start_time >= 40:
                 try:
-                    clickError('screenshot.png', 'pathimg\\PlayAgain.png', threshold=0.8)
+                    oneclickError('screenshot.png', 'pathimg\\PlayAgain.png', threshold=0.8)
                     break
                 except:
                     click('screenshot.png', 'pathimg\\Continue.png', threshold=0.8)
